@@ -1,0 +1,8 @@
+{
+  "name": "mi-extension-datos",
+  "description": "Extensión para guardar datos en MakeCode",
+  "dependencies": {},
+  "files": [
+    "main.ts"
+  ]
+}
