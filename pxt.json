@@ -1,8 +1,11 @@
 {
-  "name": "mi-extension-personajes",
-  "description": "Extensión para guardar datos de personajes en MakeCode",
+  "name": "personajes",
+  "description": "Extensión para crear y guardar personajes con salud y nivel",
   "dependencies": {},
   "files": [
     "main.ts"
-  ]
+  ],
+  "targetVersions": {
+    "arcade": "1.10.21"
+  }
 }
