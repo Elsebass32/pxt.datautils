@@ -1,55 +1,43 @@
-//% color=#0099CC icon="😀" block="Personajes"
-namespace Personajes {
-    export interface Personaje {
-        nombre: string
-        salud: number
-        nivel: number
-    }
+// Diccionario para almacenar los personajes por nombre
+let personajesMemoria: { [nombre: string]: { nombre: string, salud: number, nivel: number } } = {}
 
-    let personajesMemoria: { [nombre: string]: Personaje } = {}
-
+//% weight=100 color=#0fbc11 icon="🧍‍♂️"
+//% block="Personajes"
+namespace personajes {
+    
     //% block="crear personaje con nombre %nombre salud %salud nivel %nivel"
-   //% block="crear personaje con nombre %nombre salud %salud nivel %nivel"
-export function crearPersonaje(nombre: string, salud: number, nivel: number): void {
-    personajesMemoria[nombre] = { nombre: nombre, salud: salud, nivel: nivel }
+    export function crearPersonaje(nombre: string, salud: number, nivel: number): void {
+        personajesMemoria[nombre] = { nombre: nombre, salud: salud, nivel: nivel }
 
-    // Crear sprite visual con imagen vacía
-    let personajeSprite = sprites.create(img`
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-        . . . . . . . . . . . . . . . .
-    `, SpriteKind.Player)
-}
-
+        // Crear un sprite vacío cuando se crea el personaje
+        let personajeSprite = sprites.create(img`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        `, SpriteKind.Player)
     }
 
     //% block="leer salud de %nombre"
     export function leerSalud(nombre: string): number {
-        if (personajesMemoria[nombre]) {
-            return personajesMemoria[nombre].salud
-        }
-        return 0
+        return personajesMemoria[nombre]?.salud || 0
     }
 
     //% block="leer nivel de %nombre"
     export function leerNivel(nombre: string): number {
-        if (personajesMemoria[nombre]) {
-            return personajesMemoria[nombre].nivel
-        }
-        return 0
+        return personajesMemoria[nombre]?.nivel || 0
     }
 
     //% block="actualizar salud de %nombre a %salud"
@@ -68,9 +56,7 @@ export function crearPersonaje(nombre: string, salud: number, nivel: number): vo
 
     //% block="borrar personaje %nombre"
     export function borrarPersonaje(nombre: string): void {
-        if (personajesMemoria[nombre]) {
-            delete personajesMemoria[nombre]
-        }
+        delete personajesMemoria[nombre]
     }
 
     //% block="borrar todos los personajes"
