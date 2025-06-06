@@ -9,8 +9,31 @@ namespace Personajes {
     let personajesMemoria: { [nombre: string]: Personaje } = {}
 
     //% block="crear personaje con nombre %nombre salud %salud nivel %nivel"
-    export function crearPersonaje(nombre: string, salud: number, nivel: number): void {
-        personajesMemoria[nombre] = { nombre: nombre, salud: salud, nivel: nivel }
+   //% block="crear personaje con nombre %nombre salud %salud nivel %nivel"
+export function crearPersonaje(nombre: string, salud: number, nivel: number): void {
+    personajesMemoria[nombre] = { nombre: nombre, salud: salud, nivel: nivel }
+
+    // Crear sprite visual con imagen vacía
+    let personajeSprite = sprites.create(img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `, SpriteKind.Player)
+}
+
     }
 
     //% block="leer salud de %nombre"
