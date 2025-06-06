@@ -1,0 +1,8 @@
+{
+  "name": "mi-extension-personajes",
+  "description": "Extensión para guardar datos de personajes en MakeCode",
+  "dependencies": {},
+  "files": [
+    "main.ts"
+  ]
+}
